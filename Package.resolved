@@ -1,5 +1,5 @@
 {
-  "originHash" : "4e7a91cb80b12119e7cbee0190bc0bca2cee8334e12b7969a6e0d87f09d48649",
+  "originHash" : "6c2e48494b2e1ef7ec82a915c314526fd61f27ff794cf2f1e6a3d1236db9d37f",
   "pins" : [
     {
       "identity" : "swift-macro-coding-keys",
@@ -7,7 +7,16 @@
       "location" : "https://github.com/fizker/swift-macro-coding-keys",
       "state" : {
         "branch" : "main",
-        "revision" : "f76f394cbcc260c2adef2cc40bcc37b8ee878dc7"
+        "revision" : "f4637cebdabe1528b478c8cc09757b3caaac3053"
+      }
+    },
+    {
+      "identity" : "swift-macro-init",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fizker/swift-macro-init.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f87f9cb6a2323ef6144d46698a0e4600e504b747"
       }
     },
     {

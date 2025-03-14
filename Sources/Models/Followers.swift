@@ -1,4 +1,7 @@
-struct Followers: Codable {
-	let href: String
-	let total: Int
+import InitMacro
+
+@Init
+public struct Followers: Codable {
+	public let href: String
+	public let total: Int
 }

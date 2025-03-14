@@ -1,38 +1,40 @@
 import CodingKeysMacro
 import Foundation
+import InitMacro
 
 @CustomCodable
-struct Album: Codable {
+@Init
+public struct Album: Codable {
 	// TODO: This should be an enum
 	@CodableKey(name: "album_type")
-	let albumType: String //"compilation"
+	public let albumType: String //"compilation"
 
 	@CodableKey(name: "total_tracks")
-	let totalTracks: Int
+	public let totalTracks: Int
 
 	@CodableKey(name: "available_markets")
-	let availableMarkets: [String]
+	public let availableMarkets: [String]
 
 	@CodableKey(name: "external_urls")
-	let externalURLs: ExternalURLs
+	public let externalURLs: ExternalURLs
 
-	let href: URL
-	let id: String
-	let images: [Image]
-	let name: String
+	public let href: URL
+	public let id: String
+	public let images: [Image]
+	public let name: String
 
 	@CodableKey(name: "release_date")
-	let releaseDate: String
+	public let releaseDate: String
 
 	@CodableKey(name: "release_date_precision")
-	let releaseDatePrecision: String
+	public let releaseDatePrecision: String
 
-	let restrictions: Restrictions
-	let type: `Type`
-	let uri: String
-	let artists: [Artist]
+	public let restrictions: Restrictions
+	public let type: `Type`
+	public let uri: String
+	public let artists: [Artist]
 
-	enum `Type`: String, Codable {
+	public enum `Type`: String, Codable {
 		case album
 	}
 }

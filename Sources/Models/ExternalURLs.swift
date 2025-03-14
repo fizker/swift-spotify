@@ -1,5 +1,7 @@
+import InitMacro
 import Foundation
 
-struct ExternalURLs: Codable {
-	let spotify: URL
+@Init
+public struct ExternalURLs: Codable {
+	public let spotify: URL
 }

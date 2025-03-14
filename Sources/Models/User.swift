@@ -1,19 +1,21 @@
 import CodingKeysMacro
+import InitMacro
 
 @CustomCodable
-struct User: Codable {
+@Init
+public struct User: Codable {
 	@CodableKey(name: "external_urls")
-	let externalURLs: ExternalURLs
-	let followers: Followers
-	let href: String
-	let id: String
-	let type: `Type`
-	let uri: String
+	public let externalURLs: ExternalURLs
+	public let followers: Followers
+	public let href: String
+	public let id: String
+	public let type: `Type`
+	public let uri: String
 
 	@CodableKey(name: "display_name")
-	let displayName: String
+	public let displayName: String
 
-	enum `Type`: String, Codable {
+	public enum `Type`: String, Codable {
 		case user
 	}
 }

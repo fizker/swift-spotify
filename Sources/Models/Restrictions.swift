@@ -1,4 +1,7 @@
-struct Restrictions: Codable {
+import InitMacro
+
+@Init
+public struct Restrictions: Codable {
 	// TODO: This should be an enum
-	let reason: String
+	public let reason: String
 }

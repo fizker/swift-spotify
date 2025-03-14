@@ -16,6 +16,7 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/fizker/swift-macro-coding-keys", branch: "main"),
+		.package(url: "https://github.com/fizker/swift-macro-init.git", branch: "main"),
 	],
 	targets: [
 		.target(
@@ -28,6 +29,7 @@ let package = Package(
 			name: "Models",
 			dependencies: [
 				.product(name: "CodingKeysMacro", package: "swift-macro-coding-keys"),
+				.product(name: "InitMacro", package: "swift-macro-init"),
 			]
 		),
 		.testTarget(
