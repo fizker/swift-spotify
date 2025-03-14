@@ -1,0 +1,24 @@
+{
+  "originHash" : "4e7a91cb80b12119e7cbee0190bc0bca2cee8334e12b7969a6e0d87f09d48649",
+  "pins" : [
+    {
+      "identity" : "swift-macro-coding-keys",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fizker/swift-macro-coding-keys",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f76f394cbcc260c2adef2cc40bcc37b8ee878dc7"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}
