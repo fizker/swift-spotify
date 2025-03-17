@@ -4,7 +4,7 @@ import Foundation
 
 @CustomCodable
 @Init
-public struct Playlist: Codable {
+public struct Playlist: Codable, Sendable {
 	public let collaborative: Bool
 	public let description: String
 
@@ -31,12 +31,12 @@ public struct Playlist: Codable {
 	public let type: `Type`
 	public let uri: String
 
-	public enum `Type`: String, Codable {
+	public enum `Type`: String, Codable, Sendable {
 		case playlist
 	}
 
 	@Init
-	public struct Tracks: Codable {
+	public struct Tracks: Codable, Sendable {
 		public let href: URL
 		public let limit: Int
 		public let next: URL?
@@ -46,7 +46,7 @@ public struct Playlist: Codable {
 		public let items: [Item]
 
 		@CustomCodable
-		public struct Item: Codable {
+		public struct Item: Codable, Sendable {
 			@CodableKey(name: "added_at")
 			public let addedAt: String
 
@@ -60,7 +60,7 @@ public struct Playlist: Codable {
 
 			@CustomCodable
 			@Init
-			public struct Track: Codable {
+			public struct Track: Codable, Sendable {
 				public let album: Album
 				public let artists: [Artist]
 				public let available_markets: [String]
@@ -98,7 +98,7 @@ public struct Playlist: Codable {
 				@CodableKey(name: "is_local")
 				public let isLocal: Bool
 
-				public enum `Type`: String, Codable {
+				public enum `Type`: String, Codable, Sendable {
 					case track
 				}
 			}

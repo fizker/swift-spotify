@@ -1,6 +1,15 @@
 {
-  "originHash" : "6c2e48494b2e1ef7ec82a915c314526fd61f27ff794cf2f1e6a3d1236db9d37f",
+  "originHash" : "5e0e329845573e375787c105e52e62f720b96c6c150119d382b08903318be88f",
   "pins" : [
+    {
+      "identity" : "swift-form-urlencoded",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fizker/swift-form-urlencoded.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "afe3ce63623224f257f2c8058fc084cd2c038cbf"
+      }
+    },
     {
       "identity" : "swift-macro-coding-keys",
       "kind" : "remoteSourceControl",
@@ -17,6 +26,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "f87f9cb6a2323ef6144d46698a0e4600e504b747"
+      }
+    },
+    {
+      "identity" : "swift-oauth2-models",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fizker/swift-oauth2-models.git",
+      "state" : {
+        "revision" : "edf3e56ff84d8d087294f6687bf30ac5e1cbe203",
+        "version" : "0.4.0"
       }
     },
     {

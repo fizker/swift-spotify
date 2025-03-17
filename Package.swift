@@ -6,7 +6,7 @@ let package = Package(
 	name: "swift-spotify",
 	platforms: [
 		.iOS(.v13),
-		.macOS(.v10_15),
+		.macOS(.v13),
 	],
 	products: [
 		.library(
@@ -15,14 +15,18 @@ let package = Package(
 		),
 	],
 	dependencies: [
+		.package(url: "https://github.com/fizker/swift-form-urlencoded.git", branch: "main"),
 		.package(url: "https://github.com/fizker/swift-macro-coding-keys", branch: "main"),
 		.package(url: "https://github.com/fizker/swift-macro-init.git", branch: "main"),
+		.package(url: "https://github.com/fizker/swift-oauth2-models.git", .upToNextMinor(from: "0.4.0"))
 	],
 	targets: [
 		.target(
 			name: "SpotifyAPI",
 			dependencies: [
 				"Models",
+				.product(name: "URLEncoded", package: "swift-form-urlencoded"),
+				.product(name: "OAuth2Models", package: "swift-oauth2-models"),
 			]
 		),
 		.target(

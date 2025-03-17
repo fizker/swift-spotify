@@ -4,7 +4,7 @@ import InitMacro
 
 @CustomCodable
 @Init
-public struct Album: Codable {
+public struct Album: Codable, Sendable {
 	// TODO: This should be an enum
 	@CodableKey(name: "album_type")
 	public let albumType: String //"compilation"
@@ -34,7 +34,7 @@ public struct Album: Codable {
 	public let uri: String
 	public let artists: [Artist]
 
-	public enum `Type`: String, Codable {
+	public enum `Type`: String, Codable, Sendable {
 		case album
 	}
 }

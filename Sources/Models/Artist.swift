@@ -3,7 +3,7 @@ import InitMacro
 
 @CustomCodable
 @Init
-public struct Artist: Codable {
+public struct Artist: Codable, Sendable {
 	@CodableKey(name: "external_urls")
 	public let ExternalURLs: ExternalURLs
 	public let href: String
@@ -12,7 +12,7 @@ public struct Artist: Codable {
 	public let type: `Type`
 	public let uri: String
 
-	public enum `Type`: String, Codable {
+	public enum `Type`: String, Codable, Sendable {
 		case artist
 	}
 }
