@@ -5,9 +5,8 @@ import InitMacro
 @CustomCodable
 @Init
 public struct Album: Codable, Sendable {
-	// TODO: This should be an enum
 	@CodableKey(name: "album_type")
-	public let albumType: String //"compilation"
+	public let albumType: AlbumType
 
 	@CodableKey(name: "total_tracks")
 	public let totalTracks: Int
@@ -29,10 +28,14 @@ public struct Album: Codable, Sendable {
 	@CodableKey(name: "release_date_precision")
 	public let releaseDatePrecision: String
 
-	public let restrictions: Restrictions
+	public let restrictions: Restrictions?
 	public let type: `Type`
 	public let uri: String
 	public let artists: [Artist]
+
+	public enum AlbumType: String, Codable, Sendable {
+		case album, compilation, single
+	}
 
 	public enum `Type`: String, Codable, Sendable {
 		case album

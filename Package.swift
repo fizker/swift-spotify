@@ -44,6 +44,10 @@ let package = Package(
 			]
 		),
 		.testTarget(
+			name: "ModelsTests",
+			dependencies: ["Models"]
+		),
+		.testTarget(
 			name: "SpotifyAPITests",
 			dependencies: ["SpotifyAPI"]
 		),

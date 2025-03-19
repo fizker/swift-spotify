@@ -58,14 +58,15 @@ public actor SpotifyClient {
 			throw Error.invalidCredentials
 		default:
 			throw Error.unknownError(
-				code: response.statusCode,
+				(try? decoder.decode(ErrorResponse.self, from: data)) ?? .init(
+				status: response.statusCode,
 				message: String(data: data, encoding: .utf8) ?? data.base64EncodedString()
-			)
+			))
 		}
 	}
 
 	public enum Error: Swift.Error {
-		case unknownError(code: Int, message: String)
+		case unknownError(Models.ErrorResponse)
 		case invalidCredentials
 		case invalidResponse
 	}
