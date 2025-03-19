@@ -27,7 +27,7 @@ public actor SpotifyClient {
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"
 		let accessToken = try await accessToken()
-		request.setValue("\(accessToken.type) \(accessToken.accessToken)", forHTTPHeaderField: "authentication")
+		request.setValue("\(accessToken.type.rawValue) \(accessToken.accessToken)", forHTTPHeaderField: "Authorization")
 
 		return try await execute(request)
 	}
