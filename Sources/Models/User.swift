@@ -1,4 +1,5 @@
 import CodingKeysMacro
+import Foundation
 import InitMacro
 
 @CustomCodable
@@ -10,8 +11,7 @@ public struct User: Codable, Sendable {
 	public let href: String
 	public let id: String
 	public let type: `Type`
-	#warning("TODO: Make uri URL")
-	public let uri: String
+	public let uri: URL
 
 	@CodableKey(name: "display_name")
 	public let displayName: String?
