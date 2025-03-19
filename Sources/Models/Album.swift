@@ -11,8 +11,8 @@ public struct Album: Codable, Sendable {
 	@CodableKey(name: "total_tracks")
 	public let totalTracks: Int
 
-	@CodableKey(name: "available_markets")
-	public let availableMarkets: [String]
+//	@CodableKey(name: "available_markets")
+//	public let availableMarkets: Set<String>
 
 	@CodableKey(name: "external_urls")
 	public let externalURLs: ExternalURLs
