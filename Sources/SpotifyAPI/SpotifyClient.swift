@@ -1,4 +1,7 @@
 import Foundation
+import HTTPTypes
+import HTTPTypesFoundation
+import InitMacro
 import Models
 import OAuth2Models
 import URLEncoded
@@ -24,50 +27,67 @@ public actor SpotifyClient {
 
 	func data(for components: String...) async throws -> Data {
 		let url = components.reduce(apiURL) { $0.appending(component: $1) }
-		var request = URLRequest(url: url)
-		request.httpMethod = "GET"
 		let accessToken = try await accessToken()
-		request.setValue("\(accessToken.type.rawValue) \(accessToken.accessToken)", forHTTPHeaderField: "Authorization")
+		let request = HTTPRequest(
+			url: url,
+			headerFields: [.authorization: "\(accessToken.type.rawValue) \(accessToken.accessToken)"]
+		)
 
 		return try await execute(request)
 	}
 
 	func accessToken() async throws -> AccessTokenResponse {
-		var request = URLRequest(url: authURL)
-		request.httpMethod = "POST"
-		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "content-type")
+		var request = HTTPRequest(
+			method: .post,
+			url: authURL,
+			headerFields: [.contentType: "application/x-www-form-urlencoded"]
+		)
 		let credentials = ClientCredentialsAccessTokenRequest(clientID: clientID, clientSecret: clientSecret)
 		let encoder = URLEncoder()
-		request.httpBody = try encoder.encode(credentials).data(using: .utf8)
 
-		let data = try await execute(request)
+		let data = try await execute(request, data: try encoder.encode(credentials).data(using: .utf8))
 
 		return try decoder.decode(AccessTokenResponse.self, from: data)
 	}
 
-	func execute(_ request: URLRequest) async throws -> Data {
-		let (data, response) = try await URLSession.shared.data(for: request)
-
-		guard let response = response as? HTTPURLResponse
-		else { throw Error.invalidResponse }
-
-		switch response.statusCode {
-		case 200:
-			return data
-		case 401:
-			throw Error.invalidCredentials
-		default:
-			throw Error.unknownError(
-				(try? decoder.decode(ErrorResponse.self, from: data)) ?? .init(
-				status: response.statusCode,
-				message: String(data: data, encoding: .utf8) ?? data.base64EncodedString()
-			))
+	func execute(_ request: HTTPRequest, data: Data? = nil) async throws -> Data {
+		let session = URLSession.shared
+		let (data, response) = if let data {
+			try await session.upload(for: request, from: data)
+		} else {
+			try await session.data(for: request)
 		}
+
+		guard response.status == .ok
+		else {
+			let error = (try? decoder.decode(ErrorResponse.self, from: data)) ?? .init(
+				status: response.status.code,
+				message: String(data: data, encoding: .utf8) ?? data.base64EncodedString()
+			)
+			var type: Error.`Type` = switch response.status {
+			case .unauthorized: .invalidCredentials
+			default: .unknownError
+			}
+
+			throw Error(type, error)
+		}
+		return data
 	}
 
-	public enum Error: Swift.Error {
-		case unknownError(Models.ErrorResponse)
-		case invalidCredentials
-		case invalidResponse
+	@Init
+	public struct Error: Swift.Error {
+		public let type: `Type`
+		public let response: Models.ErrorResponse
+
+		public init(_ type: `Type`, _ response: Models.ErrorResponse) {
+			self.type = type
+			self.response = response
+		}
+
+		public enum `Type`: Sendable {
+			case unknownError
+			case invalidCredentials
+			case invalidResponse
+		}
 	}
 }

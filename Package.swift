@@ -16,6 +16,7 @@ let package = Package(
 		.executable(name: "spotify", targets: ["CLI"]),
 	],
 	dependencies: [
+		.package(url: "https://github.com/apple/swift-http-types.git", from: "1.3.1"),
 		.package(url: "https://github.com/fizker/swift-form-urlencoded.git", branch: "main"),
 		.package(url: "https://github.com/fizker/swift-macro-coding-keys", branch: "main"),
 		.package(url: "https://github.com/fizker/swift-macro-init.git", branch: "main"),
@@ -33,6 +34,8 @@ let package = Package(
 			dependencies: [
 				"Models",
 				.product(name: "URLEncoded", package: "swift-form-urlencoded"),
+				.product(name: "HTTPTypes", package: "swift-http-types"),
+				.product(name: "HTTPTypesFoundation", package: "swift-http-types"),
 				.product(name: "OAuth2Models", package: "swift-oauth2-models"),
 			]
 		),
