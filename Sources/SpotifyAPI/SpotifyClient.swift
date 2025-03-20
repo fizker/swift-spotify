@@ -2,8 +2,8 @@ import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
 import InitMacro
-import Models
 import OAuth2Models
+import SpotifyModels
 import URLEncoded
 
 let authURL = URL(string: "https://accounts.spotify.com/api/token")!
@@ -37,7 +37,7 @@ public actor SpotifyClient {
 	}
 
 	func accessToken() async throws -> AccessTokenResponse {
-		var request = HTTPRequest(
+		let request = HTTPRequest(
 			method: .post,
 			url: authURL,
 			headerFields: [.contentType: "application/x-www-form-urlencoded"]
@@ -64,7 +64,7 @@ public actor SpotifyClient {
 				status: response.status.code,
 				message: String(data: data, encoding: .utf8) ?? data.base64EncodedString()
 			)
-			var type: Error.`Type` = switch response.status {
+			let type: Error.`Type` = switch response.status {
 			case .unauthorized: .invalidCredentials
 			default: .unknownError
 			}
@@ -77,9 +77,9 @@ public actor SpotifyClient {
 	@Init
 	public struct Error: Swift.Error {
 		public let type: `Type`
-		public let response: Models.ErrorResponse
+		public let response: SpotifyModels.ErrorResponse
 
-		public init(_ type: `Type`, _ response: Models.ErrorResponse) {
+		public init(_ type: `Type`, _ response: SpotifyModels.ErrorResponse) {
 			self.type = type
 			self.response = response
 		}
@@ -89,5 +89,12 @@ public actor SpotifyClient {
 			case invalidCredentials
 			case invalidResponse
 		}
+	}
+}
+
+extension HTTPResponse.Status {
+	public var isSuccess: Bool { is2xx }
+	public var is2xx: Bool {
+		code >= 200 && 300 < code
 	}
 }

@@ -1,6 +1,6 @@
 import Foundation
+import SpotifyModels
 import Testing
-import Models
 
 struct PlaylistTests {
 	@Test

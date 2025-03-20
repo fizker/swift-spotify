@@ -10,8 +10,12 @@ let package = Package(
 	],
 	products: [
 		.library(
-			name: "swift-spotify",
+			name: "SpotifyAPI",
 			targets: ["SpotifyAPI"]
+		),
+		.library(
+			name: "SpotifyModels",
+			targets: ["SpotifyModels"]
 		),
 		.executable(name: "spotify", targets: ["CLI"]),
 	],
@@ -32,7 +36,7 @@ let package = Package(
 		.target(
 			name: "SpotifyAPI",
 			dependencies: [
-				"Models",
+				"SpotifyModels",
 				.product(name: "URLEncoded", package: "swift-form-urlencoded"),
 				.product(name: "HTTPTypes", package: "swift-http-types"),
 				.product(name: "HTTPTypesFoundation", package: "swift-http-types"),
@@ -40,15 +44,15 @@ let package = Package(
 			]
 		),
 		.target(
-			name: "Models",
+			name: "SpotifyModels",
 			dependencies: [
 				.product(name: "CodingKeysMacro", package: "swift-macro-coding-keys"),
 				.product(name: "InitMacro", package: "swift-macro-init"),
 			]
 		),
 		.testTarget(
-			name: "ModelsTests",
-			dependencies: ["Models"]
+			name: "SpotifyModelsTests",
+			dependencies: ["SpotifyModels"]
 		),
 		.testTarget(
 			name: "SpotifyAPITests",
