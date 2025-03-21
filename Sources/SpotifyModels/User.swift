@@ -16,7 +16,7 @@ public struct User: Codable, Sendable {
 	@CodableKey(name: "external_urls")
 	public let externalURLs: ExternalURLs
 	public let followers: Followers?
-	public let type: `Type`
+	public let type: `Type` = .user
 
 	public enum `Type`: String, Codable, Sendable {
 		case user

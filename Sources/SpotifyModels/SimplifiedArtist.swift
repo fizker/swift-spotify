@@ -12,7 +12,7 @@ public struct SimplifiedArtist: Codable, Sendable {
 	@CodableKey(name: "external_urls")
 	public let ExternalURLs: ExternalURLs
 
-	public let type: `Type`
+	public let type: `Type` = .artist
 
 	public enum `Type`: String, Codable, Sendable {
 		case artist

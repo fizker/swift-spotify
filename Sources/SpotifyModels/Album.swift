@@ -29,7 +29,7 @@ public struct Album: Codable, Sendable {
 	public let releaseDatePrecision: String
 
 	public let restrictions: Restrictions?
-	public let type: `Type`
+	public let type: `Type` = .album
 	public let uri: String
 	public let artists: [SimplifiedArtist]
 

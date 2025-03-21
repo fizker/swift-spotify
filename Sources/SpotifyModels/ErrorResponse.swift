@@ -4,8 +4,8 @@ import InitMacro
 @CustomCodable
 @Init
 public struct ErrorResponse: Codable, Sendable {
-	let status: Int
-	let message: String
+	public let status: Int
+	public let message: String
 
 	public init(from decoder: any Decoder) throws {
 		let wrapper = try decoder.container(keyedBy: WrapperKeys.self)

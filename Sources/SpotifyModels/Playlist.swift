@@ -30,7 +30,7 @@ public struct Playlist: Codable, Sendable {
 	public let snapshotID: String
 
 	public let tracks: Tracks
-	public let type: `Type`
+	public let type: `Type` = .playlist
 
 	public enum `Type`: String, Codable, Sendable {
 		case playlist
