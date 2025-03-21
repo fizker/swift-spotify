@@ -5,24 +5,23 @@ import Foundation
 @CustomCodable
 @Init
 public struct Playlist: Codable, Sendable {
-	public let collaborative: Bool
+	public let id: String
+	public let name: String
+	public let owner: User
+	public let href: String
+	public let uri: String
 
 	/// Note: `description` is a restricted keyword in SwiftData.
 	@CodableKey(name: "description")
 	public let playlistDescription: String?
 
+	public let images: [Image]
+	public let collaborative: Bool
+
 	@CodableKey(name: "external_urls")
 	public let externalURLs: ExternalURLs
 
 	public let followers: Followers
-
-	public let href: String
-	public let id: String
-
-	public let images: [Image]
-	public let name: String
-
-	public let owner: User
 
 	@CodableKey(name: "public")
 	public let isPublic: Bool
@@ -32,7 +31,6 @@ public struct Playlist: Codable, Sendable {
 
 	public let tracks: Tracks
 	public let type: `Type`
-	public let uri: String
 
 	public enum `Type`: String, Codable, Sendable {
 		case playlist
@@ -60,7 +58,6 @@ public struct Playlist: Codable, Sendable {
 			public let isLocal: Bool
 
 			public let track: Track
-
 		}
 	}
 }

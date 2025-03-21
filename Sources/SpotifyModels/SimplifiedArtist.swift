@@ -4,13 +4,15 @@ import InitMacro
 @CustomCodable
 @Init
 public struct SimplifiedArtist: Codable, Sendable {
-	@CodableKey(name: "external_urls")
-	public let ExternalURLs: ExternalURLs
-	public let href: String
 	public let id: String
 	public let name: String
-	public let type: `Type`
+	public let href: String
 	public let uri: String
+
+	@CodableKey(name: "external_urls")
+	public let ExternalURLs: ExternalURLs
+
+	public let type: `Type`
 
 	public enum `Type`: String, Codable, Sendable {
 		case artist

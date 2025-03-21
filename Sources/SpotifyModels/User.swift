@@ -5,16 +5,18 @@ import InitMacro
 @CustomCodable
 @Init
 public struct User: Codable, Sendable {
-	@CodableKey(name: "external_urls")
-	public let externalURLs: ExternalURLs
-	public let followers: Followers?
-	public let href: String
 	public let id: String
-	public let type: `Type`
-	public let uri: URL
 
 	@CodableKey(name: "display_name")
 	public let displayName: String?
+
+	public let uri: URL
+	public let href: String
+
+	@CodableKey(name: "external_urls")
+	public let externalURLs: ExternalURLs
+	public let followers: Followers?
+	public let type: `Type`
 
 	public enum `Type`: String, Codable, Sendable {
 		case user
