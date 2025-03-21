@@ -6,7 +6,7 @@ import InitMacro
 @Init
 public struct Track: Codable, Sendable {
 	public let album: Album
-	public let artists: [Artist]
+	public let artists: [SimplifiedArtist]
 
 //	@CodableKey(name: "available_markets")
 //	public let availableMarkets: Set<String>
@@ -31,9 +31,6 @@ public struct Track: Codable, Sendable {
 	public let restrictions: Restrictions?
 	public let name: String
 	public let popularity: Int
-
-	@CodableKey(name: "preview_url")
-	public let previewURL: URL?
 
 	@CodableKey(name: "track_number")
 	public let trackNumber: Int

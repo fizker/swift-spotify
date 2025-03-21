@@ -31,7 +31,7 @@ public struct Album: Codable, Sendable {
 	public let restrictions: Restrictions?
 	public let type: `Type`
 	public let uri: String
-	public let artists: [Artist]
+	public let artists: [SimplifiedArtist]
 
 	public enum AlbumType: String, Codable, Sendable {
 		case album, compilation, single

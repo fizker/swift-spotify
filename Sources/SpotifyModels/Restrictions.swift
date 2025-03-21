@@ -2,6 +2,9 @@ import InitMacro
 
 @Init
 public struct Restrictions: Codable, Sendable {
-	// TODO: This should be an enum
-	public let reason: String
+	public let reason: Reason
+
+	public enum Reason: String, Codable, Sendable {
+		case market, product, explicit
+	}
 }

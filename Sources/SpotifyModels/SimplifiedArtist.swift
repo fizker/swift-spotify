@@ -3,7 +3,7 @@ import InitMacro
 
 @CustomCodable
 @Init
-public struct Artist: Codable, Sendable {
+public struct SimplifiedArtist: Codable, Sendable {
 	@CodableKey(name: "external_urls")
 	public let ExternalURLs: ExternalURLs
 	public let href: String
