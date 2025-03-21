@@ -6,7 +6,10 @@ import Foundation
 @Init
 public struct Playlist: Codable, Sendable {
 	public let collaborative: Bool
-	public let description: String
+
+	/// Note: `description` is a restricted keyword in SwiftData.
+	@CodableKey(name: "description")
+	public let playlistDescription: String?
 
 	@CodableKey(name: "external_urls")
 	public let externalURLs: ExternalURLs
