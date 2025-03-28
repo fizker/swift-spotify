@@ -47,6 +47,7 @@ public struct Playlist: Codable, Sendable {
 		public let items: [Item]
 
 		@CustomCodable
+		@Init
 		public struct Item: Codable, Sendable {
 			@CodableKey(name: "added_at")
 			public let addedAt: String
