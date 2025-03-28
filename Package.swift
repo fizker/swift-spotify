@@ -22,7 +22,7 @@ let package = Package(
 	dependencies: [
 		.package(url: "https://github.com/apple/swift-http-types.git", from: "1.3.1"),
 		.package(url: "https://github.com/fizker/swift-form-urlencoded.git", branch: "main"),
-		.package(url: "https://github.com/fizker/swift-macro-coding-keys", branch: "main"),
+		.package(url: "https://github.com/fizker/swift-macro-custom-codable.git", branch: "main"),
 		.package(url: "https://github.com/fizker/swift-macro-init.git", branch: "main"),
 		.package(url: "https://github.com/fizker/swift-oauth2-models.git", .upToNextMinor(from: "0.4.0"))
 	],
@@ -46,7 +46,7 @@ let package = Package(
 		.target(
 			name: "SpotifyModels",
 			dependencies: [
-				.product(name: "CodingKeysMacro", package: "swift-macro-coding-keys"),
+				.product(name: "CustomCodableMacro", package: "swift-macro-custom-codable"),
 				.product(name: "InitMacro", package: "swift-macro-init"),
 			]
 		),

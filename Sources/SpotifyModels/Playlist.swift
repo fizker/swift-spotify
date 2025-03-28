@@ -1,4 +1,4 @@
-import CodingKeysMacro
+import CustomCodableMacro
 import InitMacro
 import Foundation
 

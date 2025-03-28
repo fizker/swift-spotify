@@ -1,5 +1,5 @@
 {
-  "originHash" : "b54ed830fdddba30cdc891e9746d73b208c0931622e66fba7e19c6f942aa9252",
+  "originHash" : "bb75b22a6e952644eb50d3b50e0525d3c0f32673cb1cef07061c57b62e8b5269",
   "pins" : [
     {
       "identity" : "swift-form-urlencoded",
@@ -20,12 +20,12 @@
       }
     },
     {
-      "identity" : "swift-macro-coding-keys",
+      "identity" : "swift-macro-custom-codable",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/fizker/swift-macro-coding-keys",
+      "location" : "https://github.com/fizker/swift-macro-custom-codable.git",
       "state" : {
         "branch" : "main",
-        "revision" : "f4637cebdabe1528b478c8cc09757b3caaac3053"
+        "revision" : "01e3b8f1483f7037069dc35e84cd9f5a743a3555"
       }
     },
     {
