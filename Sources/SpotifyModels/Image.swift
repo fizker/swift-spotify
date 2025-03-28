@@ -3,7 +3,7 @@ import Foundation
 
 @Init
 public struct Image: Codable, Sendable {
-	public let url: URL
-	public let height: Int?
-	public let width: Int?
+	public var url: URL
+	public var height: Int?
+	public var width: Int?
 }

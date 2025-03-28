@@ -6,32 +6,32 @@ import InitMacro
 @Init
 public struct Album: Codable, Sendable {
 	@CodableKey(name: "album_type")
-	public let albumType: AlbumType
+	public var albumType: AlbumType
 
 	@CodableKey(name: "total_tracks")
-	public let totalTracks: Int
+	public var totalTracks: Int
 
 //	@CodableKey(name: "available_markets")
-//	public let availableMarkets: Set<String>
+//	public var availableMarkets: Set<String>
 
 	@CodableKey(name: "external_urls")
-	public let externalURLs: ExternalURLs
+	public var externalURLs: ExternalURLs
 
-	public let href: URL
-	public let id: String
-	public let images: [Image]
-	public let name: String
+	public var href: URL
+	public var id: String
+	public var images: [Image]
+	public var name: String
 
 	@CodableKey(name: "release_date")
-	public let releaseDate: String
+	public var releaseDate: String
 
 	@CodableKey(name: "release_date_precision")
-	public let releaseDatePrecision: String
+	public var releaseDatePrecision: String
 
-	public let restrictions: Restrictions?
-	public let type: `Type` = .album
-	public let uri: String
-	public let artists: [SimplifiedArtist]
+	public var restrictions: Restrictions?
+	public var type: `Type` = .album
+	public var uri: String
+	public var artists: [SimplifiedArtist]
 
 	public enum AlbumType: String, Codable, Sendable {
 		case album, compilation, single

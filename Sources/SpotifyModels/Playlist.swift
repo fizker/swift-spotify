@@ -5,32 +5,32 @@ import Foundation
 @CustomCodable
 @Init
 public struct Playlist: Codable, Sendable {
-	public let id: String
-	public let name: String
-	public let owner: User
-	public let href: String
-	public let uri: String
+	public var id: String
+	public var name: String
+	public var owner: User
+	public var href: String
+	public var uri: String
 
 	/// Note: `description` is a restricted keyword in SwiftData.
 	@CodableKey(name: "description")
-	public let playlistDescription: String?
+	public var playlistDescription: String?
 
-	public let images: [Image]
-	public let collaborative: Bool
+	public var images: [Image]
+	public var collaborative: Bool
 
 	@CodableKey(name: "external_urls")
-	public let externalURLs: ExternalURLs
+	public var externalURLs: ExternalURLs
 
-	public let followers: Followers
+	public var followers: Followers
 
 	@CodableKey(name: "public")
-	public let isPublic: Bool
+	public var isPublic: Bool
 
 	@CodableKey(name: "snapshot_id")
-	public let snapshotID: String
+	public var snapshotID: String
 
-	public let tracks: Tracks
-	public let type: `Type` = .playlist
+	public var tracks: Tracks
+	public var type: `Type` = .playlist
 
 	public enum `Type`: String, Codable, Sendable {
 		case playlist
@@ -38,27 +38,27 @@ public struct Playlist: Codable, Sendable {
 
 	@Init
 	public struct Tracks: Codable, Sendable {
-		public let href: URL
-		public let limit: Int
-		public let next: URL?
-		public let offset: Int
-		public let previous: URL?
-		public let total: Int
-		public let items: [Item]
+		public var href: URL
+		public var limit: Int
+		public var next: URL?
+		public var offset: Int
+		public var previous: URL?
+		public var total: Int
+		public var items: [Item]
 
 		@CustomCodable
 		@Init
 		public struct Item: Codable, Sendable {
 			@CodableKey(name: "added_at")
-			public let addedAt: String
+			public var addedAt: String
 
 			@CodableKey(name: "added_by")
-			public let addedBy: User
+			public var addedBy: User
 
 			@CodableKey(name: "is_local")
-			public let isLocal: Bool
+			public var isLocal: Bool
 
-			public let track: Track
+			public var track: Track
 		}
 	}
 }
