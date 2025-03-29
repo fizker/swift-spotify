@@ -10,11 +10,7 @@ public struct Playlist: Codable, Sendable {
 	public var owner: User
 	public var href: String
 	public var uri: String
-
-	/// Note: `description` is a restricted keyword in SwiftData.
-	@CodableKey(name: "description")
-	public var playlistDescription: String?
-
+	public var description: String?
 	public var images: [Image]
 	public var collaborative: Bool
 
