@@ -46,7 +46,7 @@ public struct Playlist: Codable, Sendable {
 		@Init
 		public struct Item: Codable, Sendable {
 			@CodableKey(name: "added_at")
-			public var addedAt: String
+			public var addedAt: Date
 
 			@CodableKey(name: "added_by")
 			public var addedBy: User

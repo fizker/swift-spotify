@@ -981,6 +981,7 @@ struct PlaylistTests {
 		"""
 
 		let decoder = JSONDecoder()
+		decoder.dateDecodingStrategy = .iso8601
 
 		// The test is that it does not throw
 		_ = try decoder.decode(Playlist.self, from: Data(json.utf8))
