@@ -23,7 +23,7 @@ public actor SpotifyClient {
 		return try decoder.decode(Playlist.self, from: data)
 	}
 
-	let decoder = JSONDecoder()
+	let decoder = SpotifyJSONDecoder()
 
 	func data(for components: String...) async throws -> Data {
 		let url = components.reduce(apiURL) { $0.appending(component: $1) }

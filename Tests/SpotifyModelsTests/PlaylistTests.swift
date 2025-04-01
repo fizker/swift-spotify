@@ -980,8 +980,7 @@ struct PlaylistTests {
 		}
 		"""
 
-		let decoder = JSONDecoder()
-		decoder.dateDecodingStrategy = .iso8601
+		let decoder = SpotifyJSONDecoder()
 
 		// The test is that it does not throw
 		_ = try decoder.decode(Playlist.self, from: Data(json.utf8))
